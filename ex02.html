@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App React</title>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            var [nascimento, setNascimento] = React.useState()
+            var [idade, setIdade] = React.useState()
+
+            function atualizarNascimento(element) {
+                if (element.target.value.length !== 0) {
+                    setNascimento(element.target.value)
+                }
+            }
+
+            function enviarFormulario(element) {
+                element.preventDefault()
+
+                setIdade(2021 - nascimento)
+            }
+
+            return (
+                <div>
+                    <form onSubmit={enviarFormulario}>
+                        <label>Em que ano você nasceu? 
+                            <input onChange={atualizarNascimento} value={nascimento} />
+                        </label>
+                        <input type="submit" value="Calcular Idade" />
+                    </form>
+                    { idade ? <h3>Você tem {idade} anos</h3> : ''}
+                </div>
+            )
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.querySelector("#root")
+        )
+    </script>
+</body>
+
+</html>

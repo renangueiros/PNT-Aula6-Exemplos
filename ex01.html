@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App React</title>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Contador() {
+            var [vezes, setVezes] = React.useState(0)
+
+            function contar() {
+                setVezes(vezes + 1)
+            }
+
+            return (
+                <div>
+                    <h1>Você clicou {vezes} vezes</h1>
+                    <button onClick={contar}>Clique aqui</button>
+                </div>
+            )
+        }
+
+        ReactDOM.render(
+            <Contador />,
+            document.querySelector("#root")
+        )
+    </script>
+</body>
+
+</html>
